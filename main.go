@@ -32,7 +32,11 @@ func main() {
 	// Router for healthz
 	v1Router := chi.NewRouter()
 	v1Router.Get("/healthz", handlerReadiness)
+	//.Route for error
+
+	v1Router.Get("/err", handlerError)
 	router.Mount("/v1", v1Router)
+
 	// Server
 	server := &http.Server{
 		Handler: router,
